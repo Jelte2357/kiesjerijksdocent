@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stem op de beste docent</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="icon" href="/static/favicon.ico">
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <style>
+
+        body {
+            padding-left: 1%;
+            padding-right: 1%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+        div {
+            /* have a margin of 10 percent */
+            margin: 1%;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (orientation: landscape) {
+            .portrait {
+                display: none;
+            }
+            .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start; /* align items vertically */
+                position: relative; /* make the container a positioned parent */
+            }
+            img {
+                max-width: 100%; /* Set the maximum width to one-third of the page */
+                height: 100% auto; /* Maintain aspect ratio */
+                display: block; /* Ensure the image doesn't interfere with other elements */
+            }
+            button {
+                background: none;
+                border: 2px solid;
+                font: inherit;
+                line-height: 1;
+                margin: 0.5em;
+                padding: 1em 2em;
+                transition: 0.25s;
+                color: #fff;
+                font-weight: bold;
+                
+                &:hover,
+                &:focus { 
+                    color: #0F8;
+                }
+            }
+        }
+        @media (orientation: portrait) {
+            .landscape {
+                display: none;
+            }
+            .container {
+                display: flex;
+                align-items: flex-start;
+                max-width: 100%;
+            }
+            .image_mobile {
+                width: 66vw;
+                padding-right: 1%;
+            }
+            .text_mobile {
+                margin-top: -5%;
+
+                width: 100%;
+                font-size: 3.5vw;
+            }
+            button {
+                background: none;
+                border: 2px solid;
+                font: inherit;
+                line-height: 1;
+                margin: 0.5em;
+                padding: 5em 1em;
+                transition: 0.25s;
+                color: #fff;
+                font-weight: bold;
+                font-size: 3vw;
+                
+                &:hover,
+                &:focus { 
+                    color: #0F8;
+                }
+            }
+            .text-button-container hr {
+                margin: 10% auto; /* center the horizontal line */
+                position: relative;
+                top: 100%; /* position the line at 50% from the top of the container */
+                width: 100%; /* make the line full width */
+            }
+            .text-button-container button{
+                margin: 0% auto; /* center the last paragraph */
+                position: relative;
+                top: 0%; /* position the paragraph at 50% from the top of the container */
+                width: 100%; /* make the paragraph full width */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Welke van deze docenten wordt de sheriff van school?</h1>
+    <hr>
+    <div class="landscape">
+        <div class="container">
+            <a class="image" href="/stem?p=veerman">
+                <img src="/static/veerman.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Veerman, een gedreven econoom en bekend om zijn goede samenvattingen. Stem op hem voor permanente hoogconjunctuur!</p>
+                <button onclick="window.location.href='/stem?p=veerman'">Stem op meneer Veerman</button>
+                <hr>
+                <p>Kandidaat de Rond, de rector van deze school en tevens ook geschiedenisdocent. Stem op hem voor zijn ervaring en leiderschap.</p>
+                <button onclick="window.location.href='/stem?p=de_rond'">Stem op meneer De Rond</button>
+            </div>
+            <a class="image" href="/stem?p=de_rond">
+                <img src="/static/de_rond.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container">
+            <a class="image" href="/stem?p=glowacz">
+                <img src="/static/glowacz.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Glowacz, historicus en bekend om zijn goede powerpoints en uitleg. Maar heeft hij ook goed uitgelegd hoe je op hem stemt?</p>
+                <button onclick="window.location.href='/stem?p=glowacz'">Stem op meneer Glowacz</button>
+                <hr>
+                <p>Kandidaat Turk, geeft les in maatschappijwetenschappen. Zal de maatschappij ook op hem stemmen?</p>
+                <button onclick="window.location.href='/stem?p=turk'">Stem op meneer Turk</button>
+            </div>
+            <a class="image" href="/stem?p=turk">
+                <img src="/static/turk.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container">
+            <a class="image" href="/stem?p=roelands">
+                <img src="/static/roelands.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Roelands, geeft Duits en is bekend om haar draairad. Maar gaat ze ook opdraaien voor de overwinning?</p>
+                <button onclick="window.location.href='/stem?p=roelands'">Stem op mevrouw Roelands</button>
+                <hr>
+                <p>Kandidaat Kemperman, de meest ervaren neerlandicus van de school. Stem op haar, daar hoef je niet goed voor te kunnen spellen!</p>
+                <button onclick="window.location.href='/stem?p=kemperman'">Stem op mevrouw Kemperman</button>
+            </div>
+            <a class="image" href="/stem?p=kemperman">
+                <img src="/static/kemperman.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container">
+            <a class="image" href="/stem?p=de_nijs">
+                <img src="/static/de_nijs.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat de Nijs, natuurkundige in hart en nieren. Stem op hem, want hij heeft geen formule om de winst te berekenen.</p>
+                <button onclick="window.location.href='/stem?p=de_nijs'">Stem op meneer de Nijs</button>
+                <hr>
+                <p>Candidate Lansing gives English lessons. To vote or not to vote, that's the question. She believes you should!</p>
+                <button onclick="window.location.href='/stem?p=lansing'">Stem op mevrouw Lansing</button>
+            </div>
+            <a class="image" href="/stem?p=lansing">
+                <img src="/static/lansing.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container"> <!--mevrouw dartée and meneer matthijssen-->
+            <a class="image" href="/stem?p=dartée">
+                <img src="/static/dartée.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Dartée, een kenner van de wiskunde. Bekend met grote getallen, dus ze wil ook graag veel stemmen!</p>
+                <button onclick="window.location.href='/stem?p=dartée'">Stem op mevrouw Dartée</button>
+                <hr>
+                <p>Kandidaat Matthijssen, een genie op het gebied van wiskunde en natuurkunde. Stem slim, stem op Matthijssen!</p>
+                <button onclick="window.location.href='/stem?p=matthijssen'">Stem op meneer Matthijssen</button>
+            </div>
+            <a class="image" href="/stem?p=matthijssen">
+                <img src="/static/matthijssen.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container"> <!--mevrouw in de Braek en mevrouw de Bruijn-->
+            <a class="image" href="/stem?p=in_de_braek">
+                <img src="/static/in_de_braek.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat In de Braek, de poster verklapt dat ze uit Limburg komt, maar kan ze ook in deze provincie stemmen winnen?</p>
+                <button onclick="window.location.href='/stem?p=in_de_braek'">Stem op mevrouw In de Braek</button>
+                <hr>
+                <p>Kandidaat de Bruijn, geeft les in biologie en heeft dus kennis van vitale organen. Geef jouw vitale stem aan haar!</p>
+                <button onclick="window.location.href='/stem?p=de_bruijn'">Stem op mevrouw De Bruijn</button>
+            </div>
+            <a class="image" href="/stem?p=de_bruijn">
+                <img src="/static/de_bruijn.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container"> <!--mevrouw singewald en meneer luijks-->
+            <a class="image" href="/stem?p=lapien">
+                <img src="/static/lapien.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Lapien, sleepte het hele jaar lang zijn klas door wiskunde B heen. Zet door en stem op hem!</p>
+                <button onclick="window.location.href='/stem?p=lapien'">Stem op meneer Lapien</button>
+                <hr>
+                <p>Kandidaat Luijks, een echte kenner van de geschiedenis. Door te leren van gemaakte fouten in het verleden is hij nu gebrand om de winst te behalen!</p>
+                <button onclick="window.location.href='/stem?p=luijks'">Stem op meneer Luijks</button>
+            </div>
+            <a class="image" href="/stem?p=luijks">
+                <img src="/static/luijks.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container"> <!--mevrouw singewald en meneer heijnsdijk-->
+            <a class="image" href="/stem?p=singewald">
+                <img src="/static/singewald.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Singewald, wiskunde A docent en is er echt voor de leerlingen. Wat is de kans dat ze wint?</p>
+                <button onclick="window.location.href='/stem?p=singewald'">Stem op mevrouw Singewald</button>
+                <hr>
+                <p>Kandidaat Heijnsdijk, deze dijk van een man uit Goes maakt van elk Grieks taalprobleem complete moes!</p>
+                <button onclick="window.location.href='/stem?p=heijnsdijk'">Stem op meneer Heijnsdijk</button>
+            </div>
+            <a class="image" href="/stem?p=heijnsdijk">
+                <img src="/static/heijnsdijk.jpg">
+            </a>
+        </div>
+        <hr>
+        <div class="container">
+            <a class="image" href="/stem?p=pel">
+                <img src="/static/pel.jpg">
+            </a>
+            <div class="text">
+                <p>Kandidaat Pel geeft niet om de stemmen. Hij wil vooral ABONNEES! Abonneer NU op PELPHYSICS!!!</p>
+                <button onclick="window.location.href='/stem?p=pel'">Stem op meneer Pel</button>
+                <hr>
+                <p></p>
+                <button onclick="window.location.href='https://www.youtube.com/@pelphysics?sub_confirmation=1'">Abonneer op PelPhysics</button>
+            </div>
+            <a class="image" href="/stem?p=pel">
+                <img src="/static/pel.jpg">
+            </a>
+        </div>
+    </div>
+
+
+    <div class="portrait">
+        <div class="container">
+            <img class="image_mobile" src="/static/veerman.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Veerman, een gedreven econoom en bekend om zijn goede samenvattingen. Stem op hem voor permanente hoogconjunctuur!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=veerman'" class="button">Stem op meneer Veerman</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat de Rond, de rector van deze school en tevens ook geschiedenis- docent. Stem op hem voor zijn ervaring en zijn leiderschap.</p>
+                <hr class="inline_hr">                  
+                <button onclick="window.location.href='/stem?p=de_rond'" class="button">Stem op meneer de Rond</button>
+            </div>
+            <img class="image_mobile" src="/static/de_rond.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/glowacz.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Glowacz, historicus en bekend om zijn goede powerpoints en uitleg. Maar heeft hij ook goed uitgelegd hoe je op hem stemt?</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=glowacz'" class="button">Stem op meneer Glowacz</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Turk, geeft les in maatschappij- wetenschappen. Zal de maatschappij ook op hem stemmen?</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=turk'" class="button">Stem op meneer Turk</button>
+            </div>
+            <img class="image_mobile" src="/static/turk.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/roelands.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Roelands, geeft Duits en is bekend om haar draairad. Maar gaat ze ook opdraaien voor de overwinning?</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=roelands'" class="button">Stem op mevrouw Roelands</button>
+            </div>
+        </div> 
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Kemperman, de meest ervaren neerlandicus van de school. Stem op haar, daar hoef je niet goed voor te kunnen spellen!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=kemperman'" class="button">Stem op mevrouw Kemperman</button>
+            </div>
+            <img class="image_mobile" src="/static/kemperman.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/de_nijs.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat de Nijs, natuurkundige in hart en nieren. Stem op hem, want hij heeft geen formule om de winst te berekenen.</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=de_nijs'" class="button">Stem op meneer de Nijs</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Candidate Lansing gives English lessons. To vote or not to vote, that's the question. She believes you should!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=lansing'" class="button">Stem op mevrouw Lansing</button>
+            </div>
+            <img class="image_mobile" src="/static/lansing.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/dartée.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Dartée, een kenner van de wiskunde. Bekend met grote getallen, dus ze wil ook graag veel stemmen!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=dartée'" class="button">Stem op mevrouw Dartée</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Matthijssen, een genie op het gebied van wiskunde en natuurkunde. Stem slim, stem op Matthijssen!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=matthijssen'" class="button">Stem op meneer Matthijssen</button>
+            </div>
+            <img class="image_mobile" src="/static/matthijssen.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/in_de_braek.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat In de Braek, de poster verklapt dat ze uit Limburg komt, maar kan ze ook in deze provincie stemmen winnen?</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=in_de_braek'" class="button">Stem op mevrouw In de Braek</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat de Bruijn, geeft les in biologie en heeft dus kennis van vitale organen. Geef jouw vitale stem aan haar!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=de_bruijn'" class="button">Stem op mevrouw De Bruijn</button>
+            </div>
+            <img class="image_mobile" src="/static/de_bruijn.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/lapien.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Lapien, sleepte het hele jaar lang zijn klas door wiskunde B heen. Zet door en stem op hem!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=lapien'" class="button">Stem op meneer Lapien</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Luijks, een echte kenner van de geschiedenis. Door te leren van gemaakte fouten in het verleden is hij nu gebrand om de winst te behalen!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=luijks'" class="button">Stem op meneer Luijks</button>
+            </div>
+            <img class="image_mobile" src="/static/luijks.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/singewald.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Singewald, wiskunde A docent en is er echt voor de leerlingen. Wat is de kans dat ze wint?</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=singewald'" class="button">Stem op mevrouw Singewald</button>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Heijnsdijk, deze dijk van een man uit Goes maakt van elk Grieks taalprobleem complete moes!</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=heijnsdijk'" class="button">Stem op meneer Heijnsdijk</button>
+            </div>
+            <img class="image_mobile" src="/static/heijnsdijk.jpg"">
+        </div>
+        <hr>
+        <div class="container">
+            <img class="image_mobile" src="/static/pel.jpg"">
+            <div class="text-button-container">
+                <p class="text_mobile">Kandidaat Pel geeft niet om de stemmen. Hij wil vooral ABONNEES! Abonneer NU op PELPHYSICS!!! (onderaan de pagina of door op hem te stemmen)</p>
+                <hr class="inline_hr">
+                <button onclick="window.location.href='/stem?p=pel'" class="button">Stem op meneer Pel</button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="center">
+        <div class="g-ytsubscribe" data-channel="pelphysics" data-layout="full" data-theme="dark" data-count="default"></div>
+    </div>
+    <h3 align="center">Examenstunt 2023-2024 door Daan en Javier, pagina gemaakt door Jelte</h3>
+</body>
+</html>

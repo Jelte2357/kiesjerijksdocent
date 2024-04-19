@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Je hebt gestemd op {{ picture.title().replace("_", " ") }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="icon" href="/static/favicon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var picture = "{{ picture }}";
+            if (picture === "pel") {
+                window.open('https://www.youtube.com/@pelphysics?sub_confirmation=1', '_blank');
+            }
+        });
+    </script>
+    <style>
+        @media (orientation: landscape) {
+            .container {
+                display: flex;
+                height: 100%;
+                flex-direction: row;
+            }
+            img {
+                max-height: 100vh;
+                height: 100% auto; /* Maintain aspect ratio */
+                display: block; /* Ensure the image doesn't interfere with other elements */
+            }
+            .header {
+                display: none;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .canbevertical {
+                margin: 1%;
+            }
+            .bit_o_padding {
+                padding-top: 1%;
+                padding-bottom: 1%;
+                padding-right: 1%;
+            }
+            .header {
+                position: relative;
+                text-align: center;
+            }
+            h1 {
+                display: inline-block;
+            }
+            button {
+                background: none;
+                border: 2px solid;
+                font: inherit;
+                line-height: 1;
+                margin: 0.5em;
+                width: 40vmax;
+                padding: 3em;
+                transition: 0.25s;
+                color: #fff;
+                font-weight: bold;
+                font-size: 2em;
+
+                &:hover,
+                &:focus { 
+                    color: #D00;
+                }
+            }
+            .center {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+                width: 66%;
+            }
+            .center_fixed {
+                position: fixed;
+                bottom: 50%; /* Places the item halfway from the bottom */
+                transform: translateY(50%); /* Corrects the positioning */
+            }
+            .portrait {
+                display: none;
+            }
+        }
+        @media (orientation: portrait) {
+            .landscape {
+                display: none;
+            }
+            .container {
+                height: 100%;
+                flex-direction: column;
+            }
+            body {
+                padding: 1%;
+                
+            }
+            img {
+                max-width: 100%; /* Set the maximum width to one-third of the page */
+                height: 100% auto; /* Maintain aspect ratio */
+                display: block; /* Ensure the image doesn't interfere with other elements */
+            }
+            h1 {
+                display: inline-block;
+            }
+            .header {
+                text-align: center;
+            }
+            .stempic {
+                size: "100%";
+            }
+
+            button {
+                background: none;
+                border: 2px solid;
+                font: inherit;
+                line-height: 1;
+                margin: 0.5em;
+                width: 97%;
+                padding: 1em;
+                transition: 0.25s;
+                color: #fff;
+                font-weight: bold;
+                font-size: 2em;
+                &:hover,
+                &:focus { 
+                    color: #D00;
+                }
+            }
+        }
+    </style>
+    </head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="header">Je hebt gestemd op: "{{ picture.title().replace("_", " ") }}"</h1>
+    </div>
+    <hr class="header" width="100%">
+    
+    <div class="stempic"><img src="/static/{{ picture }}.jpg"></div>
+    <hr class="canbevertical landscape">
+    <hr class="portrait">
+    <div class="bit_o_padding center">
+        <h1 class="landscape">Je hebt gestemd op: "{{ picture.title().replace("_", " ") }}"</h1>
+        <form action="/gestemd" method="post" class="center_fixed">
+            <button type="submit" name="revoke" value="{{ picture }}">Trek je stem terug</button>
+        </form>
+        
+    </div>
+</div>
+</body>
+</html>

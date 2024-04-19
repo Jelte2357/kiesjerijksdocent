@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultaten QR</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="icon" href="/static/favicon.ico">
+</head>
+<body>
+    <div class="resultaten">
+        {% for item in results %}
+            <p>{{ item.0 }} - {{ item.1.title().replace("_", " ") }} - {{ item.2 }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

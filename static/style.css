@@ -1,0 +1,41 @@
+
+
+body {
+    background-color: #283152;
+    font-family: 'Font Name', sans-serif;
+    color: #ffffff;
+}
+
+
+.image {
+    width: 33%;
+}
+
+.text {
+    width: 33%;
+    text-align: center;
+    font-size: 1.9vw;
+    position: relative; /* make the text container a positioned parent */
+}
+.text hr {
+    margin: 0% auto; /* center the horizontal line */
+    position: relative;
+    top: 2%; /* position the line at 50% from the top of the container */
+    width: 100%; /* make the line full width */
+}
+
+hr {
+    color: #fff
+}
+
+
+.text p:first-child{
+    margin: 0% auto; /* center the first paragraph */
+}
+
+.text p:last-child{
+    margin: 0% auto; /* center the last paragraph */
+    position: relative;
+    width: 100%; /* make the paragraph full width */
+}
+
