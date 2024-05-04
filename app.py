@@ -51,16 +51,7 @@ def stem():
             return redirect("/gestemd")
         
         with open("static/data.json", "r+") as f:
-            f.seek(0)
-            if f.read().endswith("}}"):
-                f.seek(f.tell()-2)
-                f.write("}")
-            f.seek(0)
-            try:
-                data = json.loads(f.read())
-            except:
-                f.seek(0)
-                data = json.loads(f.read().rstrip("}")+"}")
+            data = json.loads(f.read())
             
             if request.form.get("stem") not in [''.join(file.split(".")[:-1]) for file in os.listdir("static")]:
                 return render_template_string("{{ message }}", message="Deze persoon bestaat niet.")
@@ -68,13 +59,10 @@ def stem():
                 data[request.form.get("stem")] = 1
             else:
                 data[request.form.get("stem")] += 1
+
             f.seek(0)
             json.dump(data, f)
-            f.seek(0)
-            # if the file ends with }}, end it with } instead
-            if f.read().endswith("}}"):
-                f.seek(f.tell()-2)
-                f.write("}")
+            f.truncate()
         
         session["has_voted"] = request.form.get("stem")
         return redirect("/gestemd")
@@ -92,25 +80,16 @@ def gestemd():
     elif request.method == "POST":
         
         with open("static/data.json", "r+") as f:
-            f.seek(0)
-            if f.read().endswith("}}"):
-                f.seek(f.tell()-2)
-                f.write("}")
-            f.seek(0)
-            try:
-                data = json.loads(f.read())
-            except:
-                f.seek(0)
-                data = json.loads(f.read().rstrip("}")+"}")
+            data = json.loads(f.read())
+
             if not request.form.get("revoke"):
                 return redirect("/gestemd")
             if data.get(session.get("has_voted")):
                 data[session.get("has_voted")] -= 1  
+            
             f.seek(0)
             json.dump(data, f)
-            if f.read().endswith("}}"):
-                f.seek(f.tell()-2)
-                f.write("}")
+            f.truncate()
         
         session.clear()
         return redirect("/")
@@ -118,17 +97,7 @@ def gestemd():
 @app.route("/resultaten")
 def resultaten():
     with open("static/data.json", "r+") as f:
-        f.seek(0)
-        if f.read().endswith("}}"):
-            f.seek(f.tell()-2)
-            f.write("}")
-        f.seek(0)
-        try:
-            data = json.loads(f.read())
-        except:
-            f.seek(0)
-            data = json.loads(f.read().rstrip("}")+"}")
-        f.seek(0)
+        data = json.loads(f.read())
         
     sorted_data = dict(sorted(data.items(), key=lambda item: item[1], reverse=True))
     results = [[position, key, value] for position, (key, value) in enumerate(sorted_data.items(), 1)]
@@ -137,18 +106,8 @@ def resultaten():
 @app.route("/hoeveelheid")
 def hoeveelheid():
     with open("static/data.json", "r+") as f:
-        f.seek(0)
-        if f.read().endswith("}}"):
-            f.seek(f.tell()-2)
-            f.write("}")
-        f.seek(0)
-        try:
-            data = json.loads(f.read())
-        except:
-            f.seek(0)
-            data = json.loads(f.read().rstrip("}")+"}")
-        f.seek(0)
-        
+        data = json.loads(f.read())
+    
     sorted_data = dict(sorted(data.items(), key=lambda item: item[1], reverse=True))
     results = [[position, key, value] for position, (key, value) in enumerate(sorted_data.items(), 1)]
     return render_template_string(str(sum([value[2] for value in results])))
